@@ -1,10 +1,9 @@
+/* Reset and Global Styles */
 *,
 *::before,
 *::after {
     box-sizing: border-box;
 }
-
-/* Custom Properties, update these for your own design */
 
 :root {
     --ff-primary: 'Source Sans Pro', sans-serif;
@@ -129,7 +128,7 @@ h3 { font-size: var(--fs-h3) }
 
 /* header */
 
-nav { display: none; }
+nav { display: flex; }
 
 /*  Intro section  */
 
@@ -226,23 +225,22 @@ nav { display: none; }
 }
 
 
-.about-me {
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
 .about-me__img {
     box-shadow: var(--bs);
+    margin-top: 2em; /* Add margin-top to create space between the subtitle and image */
+    width: 150px; /* Set a smaller width for the image */
+    height: auto; /* Ensure the height scales proportionally */
 }
 
 @media (min-width: 600px) {
     .about-me {
         display: grid;
-        grid-template-columns: 1fr 200px;
+        grid-template-columns: 1fr;
         grid-template-areas: 
-            "title img"
-            "subtitle img"
-            "text img";
+            "title"
+            "subtitle"
+            "img"
+            "text";
         grid-column-gap: 2em;
     }
     
@@ -251,19 +249,24 @@ nav { display: none; }
     }
     
     .section__subtitle--about {
-        grid-column: 1 / -1;
-        grid-row: 2;
+        grid-area: subtitle;
         position: relative;
         left: -1em;
         width: calc(100% + 2em);
         padding-left: 1em;
-        padding-right: calc(200px + 4em);
+        padding-right: 1em;
     }
     
     .about-me__img {
         grid-area: img;
         position: relative;
         z-index: 2;
+        width: 150px; /* Set a smaller width for the image */
+        height: auto; /* Ensure the height scales proportionally */
+    }
+
+    .about-me__body {
+        grid-area: text;
     }
 }
 
@@ -301,8 +304,41 @@ nav { display: none; }
     transform: scale(1.2);
     opacity: .5;
 }
+
 .icon {
     width: 50px;  /* Adjust the width to your preferred size */
     height: 50px; /* Adjust the height to your preferred size */
     border-radius: 50%; /* Optional: makes the image circular if it's square */
 }
+
+/* Additional styling for project links */
+.project-links {
+    text-align: center;
+    margin: 2em 0;
+}
+
+.project-links h3 {
+    font-size: var(--fs-h3);
+    color: var(--clr-accent);
+    margin-bottom: 1em;
+}
+
+.project-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.project-links li {
+    margin: 0.5em 0;
+}
+
+.project-links a {
+    color: var(--clr-light);
+    text-decoration: none;
+}
+
+.project-links a:hover {
+    text-decoration: underline;
+}
+
+
